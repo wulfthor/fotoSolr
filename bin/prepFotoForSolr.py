@@ -12,7 +12,6 @@ import pprint
 
 
 def runFile(inputFile):
-  solr = pysolr.Solr('http://localhost:8983/solr/', timeout=10)
 
   base=os.path.basename(inputFile)
   name=os.path.splitext(base)
@@ -24,10 +23,7 @@ def runFile(inputFile):
 
   keyListMap={"id":"id","ImageUrl":"imageurl","inputFilename":"name","modify":"date","Colorspace":"colorspace","Compression":"compression","Copyright":"copyright","Filesize":"filesize","Format":"format","Image":"image","RawFileName":"rawfilename","Image Name":"id","Number pixels":"number_of_pixels","Orientation":"orientation","Page geometry":"geometry","Page geometry width":"geometry_width","Page geometry height":"geometry_height","Print size":"printsize","Quality":"quality","Resolution":"resolution","Type":"type","Units":"units"}
 
-  #tmpLine='[{"id":"' + name[0] + '.col", "color_text" : "\n'
-  tmpLine='[{"id":"'
   keepDict['inputFilename'] = inputFile.split(".")[0]
-
 
   for line in open(inputFile):
     logging.debug("----------------")
