@@ -48,3 +48,29 @@ ls *concat | while read x; do doDateSort.py $x > mvcmd; done
 #
 ############################################################ 
 
+############################################################ 
+# VIDEOS
+# will be imported via csv
+#
+# Running find on film-02 and then
+#
+# stat -f "%N%%%a%%%m%%%B%%%z%%%HT" <file>
+# output: ./FilmProd/Jack/Elmgreen Dragset/Kunstrazzia ProRes.mov%1411056694%1410426950%1410425895%11527027824%Regular File
+#
+# N:Name
+# a:accesstime
+# m:modify
+# B:birth
+# z:size in bytes
+# HT:Type
+#
+#
+# see if escaped chars in filename:
+# awk -F\% '{if ((NF-1)>5) {print $0}}' ProdStat.txt
+# 
+# import to solr:
+# curl http://172.20.1.107:8983/solr/video/update/csv --data-binary 
+# @arkivStat.txt.csv -H 'Content-type:text/plain; charset=utf-8'
+############################################################ 
+
+
